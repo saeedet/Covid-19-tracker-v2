@@ -3,6 +3,7 @@
   flex-direction: column;
   flex: 1;
   cursor: pointer;
+  transition: background-color 220ms linear !important;
 }
 
 .viewCard + .viewCard {
