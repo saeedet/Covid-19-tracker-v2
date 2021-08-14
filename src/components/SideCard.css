@@ -1,0 +1,33 @@
+.sideCard {
+  flex: 0.3;
+  height: 100%;
+  margin-left: 25px;
+  margin-top: 15px;
+}
+
+.sideCard__table {
+  margin-top: 20px;
+  overflow: scroll;
+  color: #6a5d5d;
+  background-color: white;
+  height: 463px;
+}
+
+.sideCard__table::-webkit-scrollbar {
+  display: none;
+}
+
+.sideCard__table tr {
+  display: flex;
+  justify-content: space-between;
+}
+.sideCard__table tr:nth-of-type(odd) {
+  background-color: #f3f2f8;
+}
+
+@media (max-width: 975px) {
+  .sideCard {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}

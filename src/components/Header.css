@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+.header__title {
+  color: red;
+}
+
+.header__options {
+  background-color: white;
+  height: 45px;
+}
+
+.header__optionsHelperText {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 10px 0;
+  }
+}

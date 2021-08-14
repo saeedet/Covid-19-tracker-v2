@@ -1,23 +1,91 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Map from "./components/Map";
+import SideCard from "./components/SideCard";
+import { sortData } from "./components/utils";
+import ViewCard from "./components/ViewCard";
+import { useContextProvider } from "./contextAPI/StateProvider";
 
 function App() {
+  const [{ view_info }, dispatch] = useContextProvider();
+
+  // Fetching the worldwide stat
+  useEffect(() => {
+    const fetchData = async () => {
+      fetch("https://disease.sh/v3/covid-19/all")
+        .then((response) => response.json())
+        .then((data) => {
+          dispatch({
+            type: "SET_VIEW_INFO",
+            view_info: data,
+          });
+        });
+    };
+    fetchData();
+  }, []);
+
+  // Fetching all countries data
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("https://disease.sh/v3/covid-19/countries")
+        .then((response) => response.json())
+        .then((data) => {
+          const countries = data.map((country) => ({
+            name: country.country,
+            value: country.countryInfo.iso2,
+          }));
+          dispatch({
+            type: "SET_COUNTRIES",
+            countries: countries,
+          });
+          let sortedData = sortData(data);
+          dispatch({
+            type: "SET_TABLE_INFO",
+            table_info: sortedData,
+          });
+          dispatch({
+            type: "SET_MAP_INFO",
+            map_info: data,
+          });
+        });
+    };
+    fetchData();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <main className="app__main">
+        <section className="app__leftSection">
+          <Header />
+          <div className="app__cardsContainer">
+            <ViewCard
+              title="cases"
+              cases={view_info?.todayCases}
+              total={view_info?.cases}
+              color="red"
+              active
+            />
+            <ViewCard
+              title="recovered"
+              cases={view_info?.todayRecovered}
+              total={view_info?.recovered}
+              color="green"
+            />
+            <ViewCard
+              title="deaths"
+              cases={view_info?.todayDeaths}
+              total={view_info?.todayDeaths}
+              color="red"
+            />
+          </div>
+
+          <Map />
+        </section>
+        <SideCard />
+      </main>
+
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,22 @@
+.footer {
+  width: 100vw;
+  height: 40px;
+  margin-top: 20px;
+  background-color: whitesmoke;
+  border-top: 1px solid rgb(211, 194, 194);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  padding-bottom: 5px;
+  font-size: small;
+}
+
+.footer__copyRight {
+  font-size: small;
+}
+
+.footer__copyRight > a {
+  font-size: 12px;
+}

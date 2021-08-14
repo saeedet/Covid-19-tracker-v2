@@ -1,0 +1,39 @@
+.viewCard {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  cursor: pointer;
+}
+.viewCard + .viewCard {
+  margin-left: 10px;
+}
+.viewCard__item {
+  display: flex;
+  justify-content: center;
+}
+.viewCard__title {
+  font: bold !important;
+  text-transform: capitalize !important;
+}
+
+.viewCard__cases {
+  margin-top: 5px !important;
+  font-weight: bold !important;
+}
+
+.viewCard__total {
+  margin-top: 10px !important;
+  margin-bottom: -5px !important;
+}
+
+@media (max-width: 600px) {
+  .viewCard__title {
+    font-size: 14px !important;
+  }
+  .viewCard__cases {
+    font-size: 16px !important;
+  }
+  .viewCard__total {
+    font-size: 11px !important;
+  }
+}
