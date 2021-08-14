@@ -14,7 +14,7 @@ export const sortData = (data) => {
 // Colors regarding the case type --> for map
 const casesTypeColors = {
   cases: {
-    hex: "#CC1034",
+    hex: "#fb4443",
     rgb: "rgb(204, 16, 52)",
     half_op: "rgba(204, 16, 52, 0.5)",
     multiplier: 250,
@@ -26,7 +26,7 @@ const casesTypeColors = {
     multiplier: 200,
   },
   deaths: {
-    hex: "#fb4443",
+    hex: "#CC1034",
     rgb: "rgb(251, 68, 67)",
     half_op: "rgba(251, 68, 67, 0.5)",
     multiplier: 800,
@@ -47,7 +47,11 @@ export const showDataOnMap = (data, casesType = "cases") =>
     >
       <Popup>
         <div className="info-container">
-          <img className="info-flag" src={country.countryInfo.flag}></img>
+          <img
+            className="info-flag"
+            src={country.countryInfo.flag}
+            alt="Country flag"
+          ></img>
           <div className="info-name">{country.country}</div>
           <div className="info-confirmed">
             Cases: {numeral(country.cases).format("0,0")}

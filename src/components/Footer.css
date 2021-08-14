@@ -20,3 +20,12 @@
 .footer__copyRight > a {
   font-size: 12px;
 }
+@media (max-width: 600px) {
+  .footer,
+  .footer__copyRight {
+    font-size: x-small;
+  }
+  .footer__copyRight > a {
+    font-size: 10px;
+  }
+}

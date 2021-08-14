@@ -53,13 +53,21 @@ const options = {
 const buildChartData = (data, casesType = "cases") => {
   let chartData = [];
   let lastDataPoint;
-  console.log("graph>>> ", data);
-  for (let date in data.cases) {
+
+  for (let date in data[casesType]) {
     if (lastDataPoint) {
-      let newDataPoint = {
-        x: date,
-        y: data[casesType][date] - lastDataPoint,
-      };
+      let newDataPoint;
+      if (data[casesType][date] === 0) {
+        newDataPoint = {
+          x: date,
+          y: 0,
+        };
+      } else {
+        newDataPoint = {
+          x: date,
+          y: data[casesType][date] - lastDataPoint,
+        };
+      }
       chartData.push(newDataPoint);
     }
     lastDataPoint = data[casesType][date];
@@ -69,7 +77,7 @@ const buildChartData = (data, casesType = "cases") => {
 
 function Graph() {
   const [data, setData] = useState({});
-  const [{ selected_view }, _] = useContextProvider();
+  const [{ selected_view }] = useContextProvider();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,7 +87,6 @@ function Graph() {
         })
         .then((data) => {
           let chartData = buildChartData(data, selected_view);
-          console.log(chartData);
           setData(chartData);
         });
     };
@@ -87,8 +94,21 @@ function Graph() {
     fetchData();
   }, [selected_view]);
 
+  // the chart is not compatible with my defined colors so..
+  let color, bgColor;
+  if (selected_view === "cases") {
+    color = "#fb4443";
+    bgColor = "rgba(251, 68, 67, 0.5)";
+  } else if (selected_view === "recovered") {
+    color = "#7dd71d";
+    bgColor = "rgba(125, 215, 29, 0.5)";
+  } else {
+    color = "#CC1034";
+    bgColor = "rgba(204, 16, 52, 0.5)";
+  }
+
   return (
-    <div style={{ marginTop: "40px" }}>
+    <div style={{ marginTop: "30px" }}>
       {data?.length > 0 && (
         <Line
           data={{
@@ -96,8 +116,8 @@ function Graph() {
               {
                 label: "",
                 fill: true,
-                backgroundColor: "rgba(204, 16, 52, 0.5)",
-                borderColor: "#CC1034",
+                backgroundColor: bgColor,
+                borderColor: color,
                 data: data,
               },
             ],

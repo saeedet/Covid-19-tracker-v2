@@ -4,6 +4,7 @@
   flex: 1;
   cursor: pointer;
 }
+
 .viewCard + .viewCard {
   margin-left: 10px;
 }
@@ -17,13 +18,25 @@
 }
 
 .viewCard__cases {
-  margin-top: 5px !important;
+  margin-top: 9px !important;
   font-weight: bold !important;
 }
 
 .viewCard__total {
-  margin-top: 10px !important;
-  margin-bottom: -5px !important;
+  margin-top: 14px !important;
+  margin-bottom: -12px !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-weight: 600 !important;
+}
+
+.viewCard__totalNumber {
+  color: rgb(134, 128, 128) !important;
+  font-size: 11px !important;
+  display: flex;
+  align-items: flex-end;
+  margin-right: 3px;
 }
 
 @media (max-width: 600px) {

@@ -5,15 +5,14 @@
 
 .map__container {
   display: flex;
-  flex-shrink: 1;
-  height: 500px;
+  min-height: 390px;
   width: 100%;
 }
 
-.map__container .leaflet-container {
+.map__containerWrapper .leaflet-container {
   height: 100%;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .info-name {
@@ -39,4 +38,7 @@
   font-size: 12px;
   margin-top: 5px;
   font-weight: 700;
+}
+div .leaflet-popup-content {
+  margin: 10px !important;
 }

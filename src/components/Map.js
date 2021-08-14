@@ -7,13 +7,14 @@ import { Map as MapContainer, TileLayer } from "react-leaflet";
 import { useContextProvider } from "../contextAPI/StateProvider";
 
 function Map() {
-  const [{ map_info, selected_view, map_options }, dispatch] =
-    useContextProvider();
-  console.log(map_options);
+  const [{ map_info, selected_view, map_options }] = useContextProvider();
   return (
-    <Card className="map">
+    <Card
+      className="map"
+      style={{ backgroundColor: `var(--${selected_view}-theme)` }}
+    >
       <CardContent>
-        <CardMedia>
+        <CardMedia className="map__containerWrapper">
           <MapContainer
             center={map_options.center}
             zoom={map_options.zoom}

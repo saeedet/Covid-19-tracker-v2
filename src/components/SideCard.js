@@ -6,7 +6,7 @@ import Graph from "./Graph";
 import "./SideCard.css";
 
 function SideCard() {
-  const [{ table_info }, _] = useContextProvider();
+  const [{ table_info }] = useContextProvider();
 
   return (
     <Card className="sideCard">

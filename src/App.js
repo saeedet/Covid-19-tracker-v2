@@ -24,7 +24,7 @@ function App() {
         });
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   // Fetching all countries data
   useEffect(() => {
@@ -52,7 +52,7 @@ function App() {
         });
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
   return (
     <div className="app">
       <main className="app__main">
@@ -63,8 +63,7 @@ function App() {
               title="cases"
               cases={view_info?.todayCases}
               total={view_info?.cases}
-              color="red"
-              active
+              color="#fb4443"
             />
             <ViewCard
               title="recovered"
@@ -75,8 +74,8 @@ function App() {
             <ViewCard
               title="deaths"
               cases={view_info?.todayDeaths}
-              total={view_info?.todayDeaths}
-              color="red"
+              total={view_info?.deaths}
+              color="#cc1034"
             />
           </div>
 

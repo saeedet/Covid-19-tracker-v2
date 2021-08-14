@@ -1,6 +1,4 @@
 import { Card, CardContent, Typography } from "@material-ui/core";
-import React from "react";
-import { useState } from "react";
 import { useContextProvider } from "../contextAPI/StateProvider";
 import { prettyPrintStat } from "./utils";
 import "./ViewCard.css";
@@ -18,6 +16,7 @@ function ViewCard({ title, cases, total, color }) {
     styles = {
       borderTop: "5px solid",
       borderColor: color,
+      backgroundColor: `var(--${title}-theme)`,
     };
   }
 
@@ -30,6 +29,7 @@ function ViewCard({ title, cases, total, color }) {
           className="viewCard__item viewCard__title"
           gutterBottom
         >
+          {title === "cases" && "New "}
           {title}
         </Typography>
         <Typography
@@ -43,9 +43,12 @@ function ViewCard({ title, cases, total, color }) {
         <Typography
           color="textSecondary"
           variant="caption"
-          className="viewCard__item viewCard__total"
+          className="viewCard__total"
         >
-          {prettyPrintStat(total)} Total
+          <span className="viewCard__totalNumber">
+            {prettyPrintStat(total)}
+          </span>{" "}
+          Total
         </Typography>
       </CardContent>
     </Card>
