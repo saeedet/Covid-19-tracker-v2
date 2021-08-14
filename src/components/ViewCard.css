@@ -12,7 +12,7 @@
   justify-content: center;
 }
 .viewCard__title {
-  font: bold !important;
+  font-weight: 700 !important;
   text-transform: capitalize !important;
 }
 
