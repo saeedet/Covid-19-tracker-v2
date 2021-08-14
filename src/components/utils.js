@@ -17,7 +17,7 @@ const casesTypeColors = {
     hex: "#CC1034",
     rgb: "rgb(204, 16, 52)",
     half_op: "rgba(204, 16, 52, 0.5)",
-    multiplier: 300,
+    multiplier: 250,
   },
   recovered: {
     hex: "#7dd71d",
