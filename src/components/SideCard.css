@@ -12,6 +12,9 @@
   background-color: white;
   height: 370px;
 }
+.sideCard__table > table {
+  width: 100%;
+}
 
 .sideCard__table::-webkit-scrollbar {
   display: none;
@@ -27,11 +30,9 @@
 
 @media (max-width: 975px) {
   .sideCard {
+    flex: 1;
     margin-left: 0;
     margin: 10px;
     margin-top: 0;
-  }
-  .sideCard {
-    flex: 1;
   }
 }

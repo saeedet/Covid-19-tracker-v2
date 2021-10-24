@@ -69,8 +69,10 @@ function Header() {
             Select Country
           </FormHelperText>
           {countries &&
-            countries.map((country) => (
-              <MenuItem value={country.value}>{country.name}</MenuItem>
+            countries.map((country, index) => (
+              <MenuItem value={country.value} key={`${country.name}-${index}`}>
+                {country.name}
+              </MenuItem>
             ))}
         </Select>
       </FormControl>

@@ -15,15 +15,19 @@ function SideCard() {
           Live Cases by Country
         </Typography>
         <div className="sideCard__table">
-          {table_info &&
-            table_info.map((country) => (
-              <tr>
-                <td>{country.country}</td>
-                <td>
-                  <strong>{numeral(country.cases).format("0,0")}</strong>
-                </td>
-              </tr>
-            ))}
+          <table>
+            <tbody>
+              {table_info &&
+                table_info.map((country, index) => (
+                  <tr key={`key-${index}`}>
+                    <td>{country.country}</td>
+                    <td>
+                      <strong>{numeral(country.cases).format("0,0")}</strong>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
         <Graph />
       </CardContent>
